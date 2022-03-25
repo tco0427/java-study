@@ -1,9 +1,10 @@
 package techcourse.fp.mission;
 
+import static java.util.stream.Collectors.toList;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -21,12 +22,9 @@ public class StreamStudy {
     }
 
     public static List<Integer> doubleNumbers(List<Integer> numbers) {
-        List<Integer> result = new ArrayList<>();
-        for (Integer number : numbers) {
-            result.add(2 * number);
-        }
-
-        return result;
+        return numbers.stream()
+                .map(number -> 2 * number)
+                .collect(toList());
     }
 
     public static long sumAll(List<Integer> numbers) {
