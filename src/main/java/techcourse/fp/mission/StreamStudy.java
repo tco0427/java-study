@@ -1,5 +1,6 @@
 package techcourse.fp.mission;
 
+import static java.util.Comparator.comparing;
 import static java.util.stream.Collectors.toList;
 
 import java.io.IOException;
@@ -43,10 +44,15 @@ public class StreamStudy {
     public static void printLongestWordTop100() throws IOException {
         String contents = Files.readString(Paths
             .get("src/main/resources/fp/war-and-peace.txt"));
+
         List<String> words = Arrays.asList(contents.split("[\\P{L}]+"));
 
-        System.out.println(words);
-        System.out.println(words.size());
-        // TODO 이 부분에 구현한다.
+        words.stream()
+                .filter(word -> word.length() > 12)
+                .sorted(comparing(String::length).reversed())
+                .distinct()
+                .limit(100)
+                .map(String::toLowerCase)
+                .forEach(System.out::println);
     }
 }
