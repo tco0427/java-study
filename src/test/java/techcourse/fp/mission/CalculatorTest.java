@@ -12,19 +12,19 @@ class CalculatorTest {
 
     @Test
     public void sumAll() {
-        int sum = Calculator.sumAll(numbers, number -> true);
+        int sum = Calculator.sumAll(numbers);
         assertThat(sum).isEqualTo(21);
     }
 
     @Test
     public void sumAllEven() {
-        int sum = Calculator.sumAll(numbers, number -> ((number % 2) == 0));
+        int sum = Calculator.sumAllEven(numbers);
         assertThat(sum).isEqualTo(12);
     }
 
     @Test
     public void sumAllOverThree() {
-        int sum = Calculator.sumAll(numbers, number -> (number > 3));
+        int sum = Calculator.sumAllOverThree(numbers);
         assertThat(sum).isEqualTo(15);
     }
 }
