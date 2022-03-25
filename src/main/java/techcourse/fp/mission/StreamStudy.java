@@ -28,13 +28,9 @@ public class StreamStudy {
     }
 
     public static long sumAll(List<Integer> numbers) {
-        int result = 0;
-
-        for (Integer number : numbers) {
-            result += number;
-        }
-
-        return result;
+        return numbers.stream()
+                .mapToInt(number -> number)
+                .sum();
     }
 
     public static long sumOverThreeAndDouble(List<Integer> numbers) {
