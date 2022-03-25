@@ -5,12 +5,10 @@ import java.util.List;
 public class Calculator {
 
     public static int sumAll(List<Integer> numbers, Conditional conditional) {
-        int total = 0;
-        for (int number : numbers) {
-            if (conditional.test(number)) {
-                total += number;
-            }
-        }
-        return total;
+        return numbers
+                .stream()
+                .mapToInt(number -> number)
+                .filter(conditional::test)
+                .sum();
     }
 }
